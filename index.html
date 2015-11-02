@@ -8,37 +8,163 @@
 <script type="text/javascript" src="qrcode.js"></script>
 </head>
 <body>
-<input id="text" type="text" value="http://jindo.dev.naver.com/collie" style="width:80%" /><br />
+<h3>AllSpark QR Code Generator</h3>
 <div id="qrcode" style="width:100px; height:100px; margin-top:15px;"></div>
 
 <script type="text/javascript">
-var qrcode = new QRCode(document.getElementById("qrcode"), {
-	width : 100,
-	height : 100
-});
 
-function makeCode () {		
-	var elText = document.getElementById("text");
-	
-	if (!elText.value) {
-		alert("Input a text");
-		elText.focus();
-		return;
-	}
-	
-	qrcode.makeCode(elText.value);
+
+MasterEmployeeJSON=[
+
+{
+  "type":"registered",
+  "firstName": "xxxx",
+  "lastName": "yyyy",
+  "phone": "121212121",
+  "mailId": "www.aaa@yyy.com",
+  "company": "Computer Solutions",
+  "empId": "1997",
+  "jobTitle": "Associate Systems Engineer",
+  "practice" : "MS",
+  "twitterLink": "",
+  "linkedInLink": ""
+},
+{
+  "type":"registered",
+  "firstName": "qqqq",
+  "lastName": "wwwww",
+  "phone": "121212121",
+  "mailId": "www.dddd@yyy.com",
+  "company": "Computer Solutions",
+  "empId": "1997",
+  "jobTitle": "Associate Systems Engineer",
+  "practice" : "MS",
+  "twitterLink": "",
+  "linkedInLink": ""
 }
+];
 
-makeCode();
+</script>
 
-$("#text").
-	on("blur", function () {
-		makeCode();
-	}).
-	on("keydown", function (e) {
-		if (e.keyCode == 13) {
+<script type="text/javascript">
+var i =0;
+
+ MohitQR = function(){		
+			if(MasterEmployeeJSON[i].practice=="QA"){
+ 					
+				var qrcode = new QRCode(document.getElementById("qrcode"), {
+			    text: JSON.stringify(MasterEmployeeJSON[i]),
+			    width: 250,
+			    height: 250,
+			    colorDark : "#ffffff",
+			    colorLight : "#E20250",
+			    correctLevel : QRCode.CorrectLevel.L
+			});
+           }else if(MasterEmployeeJSON[i].practice=="Commerce"){
+		   		var qrcode = new QRCode(document.getElementById("qrcode"), {
+			    text: JSON.stringify(MasterEmployeeJSON[i]),
+			    width: 250,
+			    height: 250,
+			    colorDark : "#ffffff",
+			    colorLight : "#039EDF",
+			    correctLevel : QRCode.CorrectLevel.L
+			});
+           }
+		   else if(MasterEmployeeJSON[i].practice=="PSM"){
+		   		var qrcode = new QRCode(document.getElementById("qrcode"), {
+			    text: JSON.stringify(MasterEmployeeJSON[i]),
+			    width: 250,
+			    height: 250,
+			    colorDark : "#ffffff",
+			    colorLight : "#F19401",
+			    correctLevel : QRCode.CorrectLevel.L
+			});
+           }
+          else if(MasterEmployeeJSON[i].practice=="MS"){
+		   		var qrcode = new QRCode(document.getElementById("qrcode"), {
+			    text: JSON.stringify(MasterEmployeeJSON[i]),
+			    width: 250,
+			    height: 250,
+			    colorDark : "#ffffff",
+			    colorLight : "#0BA35A",
+			    correctLevel : QRCode.CorrectLevel.L
+			});
+           }
+           else if(MasterEmployeeJSON[i].practice=="HR"){
+		   		var qrcode = new QRCode(document.getElementById("qrcode"), {
+			    text: JSON.stringify(MasterEmployeeJSON[i]),
+			    width: 250,
+			    height: 250,
+			    colorDark : "#000000",
+			    colorLight : "#ffffff",
+			    correctLevel : QRCode.CorrectLevel.L
+			});
+            }
+           else if(MasterEmployeeJSON[i].practice=="Admin"){
+		   		var qrcode = new QRCode(document.getElementById("qrcode"), {
+			    text: JSON.stringify(MasterEmployeeJSON[i]),
+			    width: 250,
+			    height: 250,
+			    colorDark : "#000000",
+			    colorLight : "#ffffff",
+			    correctLevel : QRCode.CorrectLevel.L
+			});
+           }
+           else if(MasterEmployeeJSON[i].practice=="Finance"){
+		   		var qrcode = new QRCode(document.getElementById("qrcode"), {
+			    text: JSON.stringify(MasterEmployeeJSON[i]),
+			    width: 250,
+			    height: 250,
+			    colorDark : "#000000",
+			    colorLight : "#ffffff",
+			    correctLevel : QRCode.CorrectLevel.L
+			});
+		   	}
+            else{
+		   		var qrcode = new QRCode(document.getElementById("qrcode"), {
+			    text: JSON.stringify(MasterEmployeeJSON[i]),
+			    width: 250,
+			    height: 250,
+			    colorDark : "#000000",
+			    colorLight : "#000000",
+			    correctLevel : QRCode.CorrectLevel.L
+			});
+           }
+
+
+
+			function makeCode () {		
+				try{
+				qrcode.makeCode();
+		
+	           }catch(e){
+					console.log(e);
+				}
+			var checkMe=setInterval(function(){
+	           var imgSrc=$( "img" )[0].src;
+               if(imgSrc!=undefined  && imgSrc!=""){
+                   clearInterval(checkMe);
+                   console.log("imgSrc-----"+imgSrc);
+		           $( "img" ).wrap( "<a href='"+imgSrc+"' class='deleteAfterDownload' download='"+MasterEmployeeJSON[i].empId+"'></a>" );
+                   i++;
+ 				   $("img").click();
+                  $(".deleteAfterDownload").remove();
+                  if(i<MasterEmployeeJSON.length){
+                   MohitQR();
+                  }
+               }
+    		   
+            }, 1000);  
+			}
+		
 			makeCode();
-		}
-	});
+					
+}
+			 
+			
+	
+
+ 
+
 </script>
 </body>
