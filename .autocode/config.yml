@@ -1,0 +1,7 @@
+name: Mohit-Ak/qrcodejs
+author:
+  name: Mohit
+  email: mohitkhakharia@gmail.com
+  url: 'http://mohit-a-khakharia.branded.me/'
+copyright: 2015 Mohit
+description: QRCode generator in javascript in a loop reading a JSON. Execute MohitQR() on index.jsp to start downloading the QR Codes
